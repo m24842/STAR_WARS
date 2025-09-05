@@ -21,6 +21,7 @@ def wav_to_c_array(input_file, output_file):
 
         # Write the C array to the output file
         with open(output_file, 'w') as output:
+            output.write(f"const unsigned int wav_data_size = {len(uint16_samples)};\n")
             output.write("const uint16_t wav_data[] = {\n")
             for sample in uint16_samples:
                 output.write(f"\t{sample},\n")
